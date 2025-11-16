@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 //import { useSignup } from "@/hooks/useSignup";
 //import { useSignup } from "@/hooks/useSignup";
 import { useSignup } from "@/hooks/useSignUp";
 import Button from "@/components/ui/Button";
 import { Card, CardContent } from "@/components/ui/Card";
 import { useLocation } from "react-router-dom";
+import is from "zod/v4/locales/is.cjs";
 
 export default function SignupPage() {
   const location = useLocation();
@@ -21,7 +22,39 @@ export default function SignupPage() {
     role: location.pathname === "/joinForDoctors" ? "doctor" : "patient",
   });
 
-  const { signup, isPending } = useSignup();
+  const { signup, isPending, isError, error } = useSignup();
+
+  // Parse backend error safely
+  let emailError = null;
+  let dublicationError = null;
+  let passwordLengthError = null;
+
+  if (isError && error?.message) {
+    let parsed = null;
+    try {
+      parsed = JSON.parse(error.message);
+    } catch {
+      parsed = null;
+    }
+
+    console.log(parsed);
+
+    const isDuplicate = parsed?.code === 11000 || parsed?.error?.code === 11000;
+    const isPasswordError = parsed?.error?.statusCode === 500;
+    console.log(isPasswordError);
+
+    if (isDuplicate) {
+      emailError = "This email is already registered. Try logging in instead.";
+    } else if (isPasswordError) {
+      if (parsed.message.includes("passwordConfirm")) {
+        dublicationError = "Passwords are not matching";
+      } else if (parsed?.message?.includes("is shorter than the minimum")) {
+        passwordLengthError = "Password must be at least 9 characters long.";
+      }
+    } else {
+      emailError = "Something went wrong. Please try again.";
+    }
+  }
 
   const handleChange = (e) => {
     setForm((prev) => ({
@@ -66,6 +99,9 @@ export default function SignupPage() {
                 required
                 className="mt-1 w-full rounded-lg border border-gray-300 p-3 dark:border-gray-700 dark:bg-gray-900"
               />
+              {emailError && (
+                <p className="mt-1 text-xs text-red-600">{emailError}</p>
+              )}
             </div>
 
             {/* Password */}
@@ -79,6 +115,11 @@ export default function SignupPage() {
                 required
                 className="mt-1 w-full rounded-lg border border-gray-300 p-3 dark:border-gray-700 dark:bg-gray-900"
               />
+              {passwordLengthError && (
+                <p className="mt-1 text-xs text-red-600">
+                  {passwordLengthError}
+                </p>
+              )}
             </div>
 
             {/* Confirm Password */}
@@ -92,6 +133,9 @@ export default function SignupPage() {
                 required
                 className="mt-1 w-full rounded-lg border border-gray-300 p-3 dark:border-gray-700 dark:bg-gray-900"
               />
+              {dublicationError && (
+                <p className="mt-1 text-xs text-red-600">{dublicationError}</p>
+              )}
             </div>
 
             {/* Submit Button */}

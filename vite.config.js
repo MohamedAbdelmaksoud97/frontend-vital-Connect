@@ -13,7 +13,7 @@ export default defineConfig({
   },
   build: {
     // 👉 Output directly into backend/public
-    outDir: path.resolve(__dirname, "../Desktop/Beyaa/public"),
+    outDir: path.resolve(__dirname, "../Desktop"),
     emptyOutDir: true, // remove old files before building
   },
   base: "/", // ✅ ensures assets load correctly

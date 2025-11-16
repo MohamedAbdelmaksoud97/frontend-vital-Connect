@@ -18,7 +18,7 @@ export function useCreateDoctorProfile() {
   } = useMutation({
     mutationFn: createDoctorProfile,
     onSuccess: (data) => {
-      toast.success("Doctor profile created successfully!");
+      toast.success("Your doctor profile created successfully!");
       queryClient.invalidateQueries({ queryKey: ["me"] });
       navigate("/dashboard");
     },

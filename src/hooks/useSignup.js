@@ -25,9 +25,6 @@ export function useSignup() {
         queryClient.setQueryData(["user"], data.data.user);
       }
     },
-    onError: (err) => {
-      toast.error(err.message || "Signup failed");
-    },
   });
 
   return { signup, isPending, isError, error };
