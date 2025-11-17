@@ -19,6 +19,11 @@ import VerificationSuccessPage from "./pages/VerificationSuccessPage";
 import CreatePatientProfile from "./pages/CreatePatientProfile";
 import CreateDoctorProfile from "./pages/CreateDoctorProfile";
 import Dashboard from "./pages/Dashboard";
+import AboutPage from "./pages/AboutPage";
+import BlogPage from "./pages/BlogPage";
+import HelpCenterPage from "./pages/HelpCenterPage";
+import ContactPage from "./pages/ContactPage";
+import TermsPrivacyPage from "./pages/TermsPrivacyPage";
 
 export default function App() {
   return (
@@ -50,6 +55,11 @@ export default function App() {
           {/* You can add a 404 Not Found route here */}
           {/* <Route path="*" element={<NotFoundPage />} /> */}
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/help" element={<HelpCenterPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/terms" element={<TermsPrivacyPage />} />
         </Route>
       </Routes>
       <Toaster position="top-center" reverseOrder={false} /> {/* ✅ Add this */}

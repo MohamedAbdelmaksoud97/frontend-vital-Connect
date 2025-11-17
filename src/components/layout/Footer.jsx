@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Button from "../ui/Button";
 
 export default function Footer() {
@@ -11,54 +12,62 @@ export default function Footer() {
             Find trusted doctors and book appointments with ease.
           </p>
         </div>
+
+        {/* Company */}
         <div>
           <h5 className="text-sm font-semibold">Company</h5>
           <ul className="mt-3 space-y-2 text-sm text-gray-600 dark:text-gray-400">
             <li>
-              <a href="#" className="hover:text-[#377b87]">
+              <Link to="/about" className="hover:text-[#377b87]">
                 About
-              </a>
+              </Link>
+            </li>
+            {/* Keep Careers as placeholder for now */}
+            <li>
+              <span className="cursor-default text-gray-400">
+                Careers (coming soon)
+              </span>
             </li>
             <li>
-              <a href="#" className="hover:text-[#377b87]">
-                Careers
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-[#377b87]">
+              <Link to="/blog" className="hover:text-[#377b87]">
                 Blog
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
+
+        {/* Support */}
         <div>
           <h5 className="text-sm font-semibold">Support</h5>
           <ul className="mt-3 space-y-2 text-sm text-gray-600 dark:text-gray-400">
             <li>
-              <a href="#" className="hover:text-[#377b87]">
+              <Link to="/help" className="hover:text-[#377b87]">
                 Help Center
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:text-[#377b87]">
+              <Link to="/contact" className="hover:text-[#377b87]">
                 Contact Us
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:text-[#377b87]">
-                Terms & Privacy
-              </a>
+              <Link to="/terms" className="hover:text-[#377b87]">
+                Terms &amp; Privacy
+              </Link>
             </li>
           </ul>
         </div>
+
+        {/* App buttons */}
         <div>
           <h5 className="text-sm font-semibold">Get the App</h5>
-          <div className="mt-3 flex gap-3">
+          <div className="mt-3 flex flex-wrap gap-3">
             <Button variant="outline">App Store</Button>
             <Button variant="outline">Google Play</Button>
           </div>
         </div>
       </div>
+
       <div className="border-t border-gray-200 py-4 text-center text-sm text-gray-500 dark:border-gray-800">
         © {new Date().getFullYear()} Vital Connect. All rights reserved.
       </div>
