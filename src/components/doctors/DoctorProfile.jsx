@@ -1,11 +1,12 @@
-import React, { useMemo, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import React, { use, useMemo, useState } from "react";
+import { Link, Navigate, useParams } from "react-router-dom";
 import { useDoctor } from "@/hooks/useDoctors"; // or "@/hooks/useDoctor" if that's your file
 import { useUser } from "@/hooks/useUser";
 import { Card, CardContent } from "@/components/ui/Card";
 import Button from "@/components/ui/Button";
 import InitialsAvatar from "@/components/ui/InitialsAvatar";
 import BookingModal from "@/components/doctors/BookingModal";
+import { useNavigate } from "react-router-dom";
 
 function money(n, currency = "EGP") {
   return typeof n === "number"
@@ -53,6 +54,7 @@ function toProfileFromApiDoctor(d) {
 export default function ProfilePage() {
   const { id } = useParams();
   const { data: doctor, isLoading, isError, error } = useDoctor(id);
+  const navigate = useNavigate();
 
   console.log("DoctorProfile doctor:", doctor);
 
@@ -163,8 +165,11 @@ export default function ProfilePage() {
             </div>
 
             <div className="flex gap-2">
-              <Button variant="outline">Contact</Button>
-              <Button onClick={() => setIsBookingOpen(true)}>
+              <Button
+                onClick={() =>
+                  me ? setIsBookingOpen(true) : navigate("/login")
+                }
+              >
                 Book Appointment
               </Button>
             </div>
