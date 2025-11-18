@@ -53,6 +53,9 @@ function toProfileFromApiDoctor(d) {
 export default function ProfilePage() {
   const { id } = useParams();
   const { data: doctor, isLoading, isError, error } = useDoctor(id);
+
+  console.log("DoctorProfile doctor:", doctor);
+
   const { data: me } = useUser();
   const patientId = me?.patientProfile?._id; // from your API
   console.log(patientId);
@@ -126,7 +129,7 @@ export default function ProfilePage() {
         <CardContent className="p-6">
           <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
             <div className="flex items-start gap-4">
-              <InitialsAvatar name={name} size={56} />
+              <InitialsAvatar name={name} doc={doctor} size={56} />
               <div>
                 <div className="flex flex-wrap items-center gap-2">
                   <h1 className="text-xl leading-tight font-bold">{name}</h1>

@@ -15,7 +15,7 @@ export default function DoctorCard({ doc, onViewProfile, onBook }) {
       <CardContent className="flex flex-col gap-4 p-5">
         {/* Top section */}
         <div className="flex items-start gap-4">
-          <InitialsAvatar name={name} />
+          <InitialsAvatar name={name} doc={doc} />
 
           <div className="min-w-0 flex-1 space-y-1">
             <div className="flex items-center justify-between gap-2">
