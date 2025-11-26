@@ -37,8 +37,8 @@ export default function SearchBar({ value, onChange, onSubmit }) {
         <input
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          placeholder="Search by doctor name or specialization..."
-          className="w-full bg-transparent px-2 py-2 text-base outline-none placeholder:text-gray-400"
+          placeholder="Mohamed hussein or Cardiology"
+          className="w-full bg-transparent px-2 py-2 text-base text-[14px] outline-none placeholder:text-gray-400"
         />
         <Button type="submit" className="shrink-0">
           Search

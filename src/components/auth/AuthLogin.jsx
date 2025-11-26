@@ -50,10 +50,20 @@ export default function AuthLogin() {
         Log in
       </Button>
       <p className="text-center text-sm text-gray-600 dark:text-gray-300">
+        <button
+          type="button"
+          className="cursor-pointer text-[#377b87] hover:underline"
+          onClick={() => navigate("/forgot-password")}
+        >
+          Forgot Password?
+        </button>
+      </p>
+
+      <p className="text-center text-sm text-gray-600 dark:text-gray-300">
         No account?{" "}
         <button
           type="button"
-          className="text-[#377b87] hover:underline"
+          className="cursor-pointer text-[#377b87] hover:underline"
           onClick={() => navigate("/signup")}
         >
           Sign up

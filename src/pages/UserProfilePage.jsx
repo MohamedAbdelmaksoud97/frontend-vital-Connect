@@ -160,8 +160,8 @@ export default function UserProfilePage() {
               <Link to="/settings">
                 <Button variant="outline">Settings</Button>
               </Link>
-              <Link to="/bookings">
-                <Button>My bookings</Button>
+              <Link to="/appointments">
+                <Button>My appointments</Button>
               </Link>
             </div>
           </div>
@@ -169,7 +169,7 @@ export default function UserProfilePage() {
       </Card>
 
       {/* Details grid */}
-      <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-3">
+      <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-1">
         {/* Account section */}
         <div className="lg:col-span-1">
           <Section title="Account">

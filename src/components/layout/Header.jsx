@@ -48,14 +48,18 @@ export default function Header() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:py-4">
         {/* Brand */}
         <Link to="/" className="flex items-center gap-2">
-          <img src="images/logo.png" alt="Vital Connect" className="h-8 w-10" />
+          <img
+            src="/images/logo.png"
+            alt="Vital Connect"
+            className="h-8 w-10"
+          />
           <span className="text-lg font-extrabold tracking-tight">
             Vital Connect
           </span>
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-2 sm:flex">
+        <nav className="hidden items-center gap-4 sm:flex">
           {isLoading ? (
             <div className="flex items-center gap-2">
               <div className="h-9 w-24 animate-pulse rounded-xl bg-gray-200 dark:bg-gray-800" />
@@ -126,15 +130,17 @@ export default function Header() {
             </>
           ) : (
             <>
-              <Link to="/login">
-                <Button variant="ghost" className="hidden sm:inline-flex">
-                  Log in
-                </Button>
+              <Link
+                to="/login"
+                className="text-sm font-medium text-gray-700 hover:text-[#377b87] hover:underline dark:text-gray-200"
+              >
+                Log in
               </Link>
-              <Link to="/signup">
-                <Button variant="outline" className="hidden sm:inline-flex">
-                  Sign up
-                </Button>
+              <Link
+                to="/signup"
+                className="text-sm font-medium text-gray-700 hover:text-[#377b87] hover:underline dark:text-gray-200"
+              >
+                Sign up
               </Link>
               <Link to="/joinForDoctors">
                 <Button className="ml-1">Join as a Doctor</Button>
@@ -247,26 +253,24 @@ export default function Header() {
             </div>
           ) : (
             <div className="space-y-2">
-              <Button
-                variant="ghost"
-                className="w-full justify-start"
+              <button
+                className="w-full justify-start text-left text-sm text-gray-800 hover:text-[#377b87] hover:underline dark:text-gray-100"
                 onClick={() => {
                   setMobileOpen(false);
                   navigate("/login");
                 }}
               >
                 Log in
-              </Button>
-              <Button
-                variant="outline"
-                className="w-full justify-start"
+              </button>
+              <button
+                className="w-full justify-start text-left text-sm text-gray-800 hover:text-[#377b87] hover:underline dark:text-gray-100"
                 onClick={() => {
                   setMobileOpen(false);
                   navigate("/signup");
                 }}
               >
                 Sign up
-              </Button>
+              </button>
               <Button
                 className="w-full justify-start"
                 onClick={() => {

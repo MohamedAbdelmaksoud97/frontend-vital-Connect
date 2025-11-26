@@ -244,7 +244,7 @@ export default function AppointmentsPage() {
   const canNext = all.length === limit; // <--- THE FIX
 
   const metaText = useMemo(() => {
-    if (!list.length) return "No appointments found";
+    //if (!list.length) return "No appointments found";
     const first = (page - 1) * limit + 1;
     const last = first + list.length - 1;
     return `Showing ${first}–${last}${isFetching ? " (updating…)" : ""}`;

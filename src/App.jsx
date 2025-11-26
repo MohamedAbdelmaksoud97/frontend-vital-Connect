@@ -24,6 +24,9 @@ import BlogPage from "./pages/BlogPage";
 import HelpCenterPage from "./pages/HelpCenterPage";
 import ContactPage from "./pages/ContactPage";
 import TermsPrivacyPage from "./pages/TermsPrivacyPage";
+import ForgotPassword from "@/pages/ForgotPassword";
+import EmailSent from "@/pages/EmailSent";
+import ResetPassword from "@/pages/ResetPassword";
 
 export default function App() {
   return (
@@ -43,6 +46,11 @@ export default function App() {
           <Route path="/account-created" element={<AccountCreated />} />
           <Route path="/verify-email" element={<VerifyEmailPage />} />
           <Route path="/verify-success" element={<VerificationSuccessPage />} />
+
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/email-sent" element={<EmailSent />} />
+
+          <Route path="/reset-password/:token" element={<ResetPassword />} />
           <Route
             path="/create-patient-profile"
             element={<CreatePatientProfile />}
